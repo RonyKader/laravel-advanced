@@ -9,7 +9,7 @@ class OrderController extends Controller
 {
     public function store()
     {
-        $payment = new Payment('usd');
+        $payment = new PaymentGateway('usd');
 
         dd($payment->index(22));
     }

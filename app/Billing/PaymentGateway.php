@@ -2,7 +2,7 @@
 
 namespace App\Billing;
 
-class Payment  
+class PaymentGateway  
 {
     public $currency;
 
