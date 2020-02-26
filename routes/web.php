@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 
 
-Route::get('order','OrderController@store');
+Route::get('pay','OrderController@store');

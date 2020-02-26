@@ -2,20 +2,33 @@
 
 namespace App\Billing;
 
+use Illuminate\Support\Str;
+
 class PaymentGateway  
 {
-    public $currency;
+    
+    private $currency;
+    private $discount;
 
-    function __construct($currency) {
+    public function __construct($currency) 
+    {
         $this->currency = $currency;
+        $this->discount = 0;
     }
 
 
-    public function index($amount)
+    public function setDiscount($amount)
+    {
+        $this->discount = $amount;
+    }
+    
+    public function charge($amount)
     {
         return [
-            'amount' => $amount,
-            'currency' => $this->currency
+            'amount' => $amount - $this->discount,
+            'confirmation_number' => Str::random(),
+            'discount' => $this->discount,
+            'currency' => $this->currency,
         ];
     }
 }
